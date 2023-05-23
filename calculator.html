@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+
+        
+</head>
+
+<body>
+    <div class="calculator">
+        <input type="text" id="result" readonly class="box">
+        <div class="buttons">
+
+            <button onclick="appendNumber(7)">7</button>
+            <button onclick="appendNumber(8)">8</button>
+            <button onclick="appendNumber(9)">9</button>
+            <button onclick="appendOperator('+')" class="operator">+</button>
+            <button onclick="appendNumber(4)">4</button>
+            <button onclick="appendNumber(5)">5</button>
+            <button onclick="appendNumber(6)">6</button>
+            <button onclick="appendOperator('-')" class="operator">-</button>
+            <button onclick="appendNumber(1)">1</button>
+            <button onclick="appendNumber(2)">2</button>
+            <button onclick="appendNumber(3)">3</button>
+            <button onclick="appendOperator('*')" class="operator">*</button>
+            <button onclick="appendOperator('.')" class="operator">.</button>
+            <button onclick="appendNumber(0)">0</button>
+            <button onclick="calculate()" class="operator">=</button>
+            <button onclick="appendOperator('/')" class="operator">/</button>
+            <button onclick="clearResult()" class="operator">C</button>
+            <button onclick="deleteLast()" class="operator">DEL</button>
+        </div>
+    </div>
+    <script>let result = document.getElementById('result');
+        let expression = '';
+        
+        function clearResult() {
+            result.value = '';
+            expression = '';
+        }
+        
+        function deleteLast() {
+            result.value = result.value.slice(0, -1);
+            expression = expression.slice(0, -1);
+        }
+        
+        function appendNumber(number) {
+            result.value += number;
+            expression += number;
+        }
+        
+        function appendOperator(operator) {
+            result.value += operator;
+            expression += operator;
+        }
+        
+        function calculate() {
+            try {
+                result.value = eval(expression);
+            } catch (error) {
+                result.value = 'Error';
+            }
+        }</script>
+</body>
+
+</html>
